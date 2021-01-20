@@ -1,7 +1,7 @@
 import sys
 from ZoneInfo import ZoneInfo
 from ZoneWidget import ZoneWidget
-from PySide2 import QtWidgets
+from PySide2 import QtWidgets, QtCore, QtGui
 import Constants
 
 
@@ -20,11 +20,14 @@ class Window(QtWidgets.QMainWindow):
             ZoneInfo("Asia/Calcutta", "Pune, IN", 2, 2)
         ]
 
+        QtGui.QFontDatabase.addApplicationFont(Constants.FONT_LOCATION)
+        app.setFont(QtGui.QFont(Constants.FONT_NAME))
+
         grid = QtWidgets.QGridLayout()
 
         self.win = QtWidgets.QWidget()
         self.win.keyPressEvent = self.keyPressEvent
-        self.win.setStyleSheet('background-color: #121212; color: white; font-family: "Verdana"')
+        self.win.setStyleSheet('background-color: #121212; color: white')
 
         for zone in timezones:
             grid.addWidget(ZoneWidget(zone), zone.row, zone.col)

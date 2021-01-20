@@ -1,5 +1,5 @@
 import Constants
-from PySide2 import QtCore, QtWidgets
+from PySide2 import QtCore, QtWidgets, QtGui
 
 
 class DataDisplay(QtWidgets.QLabel):
