@@ -1,7 +1,7 @@
 import sys
 from ZoneInfo import ZoneInfo
 from ZoneWidget import ZoneWidget
-from PySide2 import QtWidgets, QtGui
+from PySide2 import QtWidgets
 import Constants
 
 
@@ -23,6 +23,7 @@ class Window(QtWidgets.QMainWindow):
         grid = QtWidgets.QGridLayout()
 
         self.win = QtWidgets.QWidget()
+        self.win.keyPressEvent = self.keyPressEvent
         self.win.setStyleSheet('background-color: #121212; color: white; font-family: "Verdana"')
 
         for zone in timezones:
@@ -30,7 +31,11 @@ class Window(QtWidgets.QMainWindow):
 
         self.win.setLayout(grid)
 
+    def keyPressEvent(self, event):
+        if event.key() == Constants.ESCAPE_KEY:
+            self.win.close()
+
     def start(self):
         self.win.showFullScreen()
 
-        sys.exit(app.exec_())
+        app.exec_()
