@@ -26,6 +26,7 @@ class Window(QtWidgets.QMainWindow):
         grid = QtWidgets.QGridLayout()
 
         self.win = QtWidgets.QWidget()
+        self.win.setWindowTitle("PyClock")
         self.win.keyPressEvent = self.keyPressEvent
         self.win.setStyleSheet('background-color: #121212; color: white')
 
