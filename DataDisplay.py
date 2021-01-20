@@ -1,5 +1,5 @@
 import Constants
-from PySide2 import QtCore, QtWidgets
+from PySide2 import QtCore, QtWidgets, QtGui
 
 
 class DataDisplay(QtWidgets.QLabel):
@@ -7,5 +7,5 @@ class DataDisplay(QtWidgets.QLabel):
         super().__init__()
 
         self.setText(text)
+        self.setFont(QtGui.QFont("Roboto", size))
         self.setAlignment(QtCore.Qt.AlignCenter)
-        self.setStyleSheet("font-size: %spt;" % size)

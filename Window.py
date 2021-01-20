@@ -14,9 +14,6 @@ class Window(QtWidgets.QMainWindow):
 
         self.timer_count = 0
 
-        QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling, True)
-        QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_UseHighDpiPixmaps, True)
-
         self.timezone_controls = [
             ZoneWidget(ZoneInfo("Europe/London", "Calne, GB", 1, 1)),
             ZoneWidget(ZoneInfo("US/Pacific", "Los Angeles, US", 0, 0)),
