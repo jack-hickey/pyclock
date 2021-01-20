@@ -14,4 +14,3 @@ ZONE_CODE_FORMAT = "%Z"
 ESCAPE_KEY = 16777216
 
 FONT_LOCATION = "Roboto-Medium.ttf"
-FONT_NAME = "Roboto"

@@ -11,7 +11,6 @@ class ZoneWidget(QtWidgets.QWidget):
         super().__init__()
 
         self.data = ZoneData(zone)
-        self.timer_count = 0
 
         # Zone Code
         self.zone_text = DataDisplay(Constants.ZONE_FONT_SIZE, self.data.zone_code)
@@ -51,24 +50,12 @@ class ZoneWidget(QtWidgets.QWidget):
 
         self.setLayout(self.layout)
 
-        # Time Timer
-        self.timer = QtCore.QTimer()
-
-        self.timer.timeout.connect(self.update_times)
-        self.timer.start(1000)
-
     def update_times(self):
         self.data.update_times()
 
         self.time_text.setText(self.data.datetime_data.strftime(Constants.TIME_FORMAT))
         self.long_date.setText(self.data.datetime_data.strftime(Constants.LONG_DATE_FORMAT))
         self.short_date.setText(self.data.datetime_data.strftime(Constants.SHORT_DATE_FORMAT))
-
-        self.timer_count += 1
-
-        if self.timer_count == Constants.WEATHER_UPDATE_INTERVAL:
-            self.update_weather()
-            self.timer_count = 0
 
     def update_weather(self):
         self.data.update_weather()
