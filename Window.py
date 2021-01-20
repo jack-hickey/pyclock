@@ -1,7 +1,7 @@
 import sys
 from ZoneInfo import ZoneInfo
 from ZoneWidget import ZoneWidget
-from PySide2 import QtWidgets, QtCore, QtGui
+from PySide2 import QtWidgets, QtGui
 import Constants
 
 
