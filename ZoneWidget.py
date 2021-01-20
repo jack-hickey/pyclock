@@ -33,6 +33,8 @@ class ZoneWidget(QtWidgets.QWidget):
         self.layout = QtWidgets.QGridLayout()
         self.layout.setAlignment(QtCore.Qt.AlignCenter)
 
+        self.layout.setSpacing(0)
+
         # Weather Icon
         self.weather_icon_widget = QtWidgets.QLabel()
         self.weather_icon_widget.setAlignment(QtCore.Qt.AlignCenter)

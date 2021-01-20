@@ -25,6 +25,7 @@ class Window(QtWidgets.QMainWindow):
         QtGui.QFontDatabase.addApplicationFont(Constants.FONT_LOCATION)
 
         grid = QtWidgets.QGridLayout()
+        grid.setSpacing(0)
 
         self.win = QtWidgets.QWidget()
         self.win.setWindowTitle("PyClock")
