@@ -31,11 +31,6 @@ class Window(QtWidgets.QMainWindow):
         self.win.setSizePolicy(QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred))
         self.win.keyPressEvent = self.keyPressEvent
         self.win.setStyleSheet('background-color: #121212; color:white; font-family:Roboto')
-        self.win.setWindowFlags(QtCore.Qt.FramelessWindowHint)
-
-        size = app.primaryScreen().size()
-
-        self.win.setFixedSize(size.width(), size.height())
 
         for control in self.timezone_controls:
             grid.addWidget(control, control.data.zone.row, control.data.zone.col)
@@ -67,6 +62,6 @@ class Window(QtWidgets.QMainWindow):
             self.win.close()
 
     def start(self):
-        self.win.show()
+        self.win.showFullScreen()
 
         app.exec_()

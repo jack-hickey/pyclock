@@ -12,6 +12,8 @@ class ZoneWidget(QtWidgets.QWidget):
 
         self.data = ZoneData(zone)
 
+        self.setStyleSheet("background-color:red")
+
         # Zone Code
         self.zone_text = DataDisplay(Constants.ZONE_FONT_SIZE, self.data.zone_code)
 
@@ -37,7 +39,6 @@ class ZoneWidget(QtWidgets.QWidget):
         self.weather_icon_widget = QtWidgets.QLabel()
         self.weather_icon_widget.setAlignment(QtCore.Qt.AlignCenter)
 
-        self.update_times()
         self.update_weather()
 
         self.layout.addWidget(self.zone_text, 0, 1)
@@ -64,8 +65,9 @@ class ZoneWidget(QtWidgets.QWidget):
         self.fahrenheit_text.setText("%s °F" % self.data.fahrenheit)
 
         pixmap = QtGui.QPixmap()
-        data = requests.get('http://openweathermap.org/img/wn/%s@2x.png' % self.data.icon_id).content
+        data = requests.get('https://openweathermap.org/img/wn/%s@2x.png' % self.data.icon_id).content
 
-        pixmap.loadFromData(data)
+        pixmap.loadFromData(QtCore.QByteArray(data))
+        pixmap = pixmap.scaled(Constants.ICON_SIZE, Constants.ICON_SIZE, QtCore.Qt.AspectRatioMode.KeepAspectRatio)
 
         self.weather_icon_widget.setPixmap(pixmap)
