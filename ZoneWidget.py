@@ -37,6 +37,9 @@ class ZoneWidget(QtWidgets.QWidget):
         self.weather_icon_widget = QtWidgets.QLabel()
         self.weather_icon_widget.setAlignment(QtCore.Qt.AlignCenter)
 
+        self.icon_size = QtGui.QFontMetrics(self.long_date.font()).height() * 2
+
+        self.update_times()
         self.update_weather()
 
         self.layout.addWidget(self.zone_text, 0, 1)
@@ -65,9 +68,7 @@ class ZoneWidget(QtWidgets.QWidget):
         pixmap = QtGui.QPixmap()
         data = requests.get('https://openweathermap.org/img/wn/%s@2x.png' % self.data.icon_id).content
 
-        size = self.time_text.font().pointSize() * 5
-
         pixmap.loadFromData(QtCore.QByteArray(data))
-        pixmap = pixmap.scaled(size, size, QtCore.Qt.AspectRatioMode.KeepAspectRatio)
+        pixmap = pixmap.scaled(self.icon_size, self.icon_size, QtCore.Qt.AspectRatioMode.KeepAspectRatio)
 
         self.weather_icon_widget.setPixmap(pixmap)
