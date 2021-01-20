@@ -37,9 +37,9 @@ class ZoneWidget(QtWidgets.QWidget):
         self.weather_icon_widget = QtWidgets.QLabel()
         self.weather_icon_widget.setAlignment(QtCore.Qt.AlignCenter)
 
-        self.init_weather_controls()
-
         self.icon_size = QtGui.QFontMetrics(self.long_date.font()).height() * 2
+
+        self.init_weather_controls()
 
         self.update_times()
         self.update_weather()
@@ -54,7 +54,9 @@ class ZoneWidget(QtWidgets.QWidget):
     def init_weather_controls(self):
         weather_grid = QtWidgets.QGridLayout()
 
-        self.celsius_text.setContentsMargins(100, 0, 100, 0)
+        margin = int(self.icon_size * 1.5)
+
+        self.celsius_text.setContentsMargins(margin, 0, margin, 0)
 
         weather_grid.addWidget(self.weather_icon_widget, 0, 0)
         weather_grid.addWidget(self.celsius_text, 0, 1)
