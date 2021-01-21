@@ -14,6 +14,8 @@ class Window(QtWidgets.QMainWindow):
 
         self.timer_count = 0
 
+        Constants.ICON_SIZE = int(app.primaryScreen().geometry().width() / 20)
+
         self.timezone_controls = [
             ZoneWidget(ZoneInfo("Europe/London", "Calne, GB", 1, 1)),
             ZoneWidget(ZoneInfo("US/Pacific", "Los Angeles, US", 0, 0)),
