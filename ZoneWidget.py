@@ -12,6 +12,8 @@ class ZoneWidget(QtWidgets.QWidget):
 
         self.data = ZoneData(zone)
 
+        self.setStyleSheet("background-color:red")
+
         # Zone Code
         self.zone_text = DataDisplay(Constants.ZONE_FONT_SIZE, self.data.zone_code)
 
@@ -30,7 +32,7 @@ class ZoneWidget(QtWidgets.QWidget):
         # Fahrenheit
         self.fahrenheit_text = DataDisplay(Constants.TEMPERATURE_FONT_SIZE)
 
-        self.layout = QtWidgets.QGridLayout()
+        self.layout = QtWidgets.QVBoxLayout()
         self.layout.setAlignment(QtCore.Qt.AlignCenter)
 
         self.layout.setSpacing(0)
@@ -41,33 +43,36 @@ class ZoneWidget(QtWidgets.QWidget):
 
         self.icon_size = QtGui.QFontMetrics(self.long_date.font()).height() * 2
 
-        self.init_weather_controls()
-
         self.update_times()
         self.update_weather()
 
-        self.layout.addWidget(self.zone_text, 0, 1)
-        self.layout.addWidget(self.time_text, 1, 1)
-        self.layout.addWidget(self.long_date, 2, 1)
-        self.layout.addWidget(self.short_date, 3, 1)
+        self.layout.addWidget(self.zone_text)
+        self.layout.addWidget(self.time_text)
+        self.layout.addWidget(self.long_date)
+        self.layout.addWidget(self.short_date)
+
+        self.init_weather_controls()
 
         self.setLayout(self.layout)
 
     def init_weather_controls(self):
-        weather_grid = QtWidgets.QGridLayout()
+        weather_grid = QtWidgets.QHBoxLayout()
 
-        margin = int(self.icon_size * 1.5)
+        margin = int((self.icon_size * 1.5))
 
         self.celsius_text.setContentsMargins(margin, 0, margin, 0)
 
-        weather_grid.addWidget(self.weather_icon_widget, 0, 0)
-        weather_grid.addWidget(self.celsius_text, 0, 1)
-        weather_grid.addWidget(self.fahrenheit_text, 0, 2)
+        weather_grid.addWidget(self.weather_icon_widget)
+        weather_grid.addWidget(self.celsius_text)
+        weather_grid.addWidget(self.fahrenheit_text)
+
+        self.weather_icon_widget.setFixedWidth(
+            QtGui.QFontMetrics(self.fahrenheit_text.font()).width(self.fahrenheit_text.text()))
 
         weather_widget = QtWidgets.QWidget()
         weather_widget.setLayout(weather_grid)
 
-        self.layout.addWidget(weather_widget, 4, 1)
+        self.layout.addWidget(weather_widget)
 
     def update_times(self):
         self.data.update_times()
