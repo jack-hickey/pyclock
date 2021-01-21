@@ -12,8 +12,6 @@ class ZoneWidget(QtWidgets.QWidget):
 
         self.data = ZoneData(zone)
 
-        self.setStyleSheet("background-color:red")
-
         # Zone Code
         self.zone_text = DataDisplay(Constants.ZONE_FONT_SIZE, self.data.zone_code)
 
