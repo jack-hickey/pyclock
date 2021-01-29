@@ -15,9 +15,6 @@ class ZoneData:
         self.celsius = ""
         self.fahrenheit = ""
 
-        self.update_times()
-        self.update_weather()
-
     def update_times(self):
         data = timezone(self.zone.zone)
 
