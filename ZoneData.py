@@ -22,8 +22,11 @@ class ZoneData:
         self.zone_code = self.datetime_data.strftime(Constants.ZONE_CODE_FORMAT)
 
     def update_weather(self):
-        weather = self.weather_mgr.weather_at_place(self.zone.weather_name).weather
+        try:
+            weather = self.weather_mgr.weather_at_place(self.zone.weather_name).weather
 
-        self.celsius = str(weather.temperature('celsius')['temp'])
-        self.fahrenheit = str(weather.temperature('fahrenheit')['temp'])
-        self.icon_id = weather.weather_icon_name
+            self.celsius = str(weather.temperature('celsius')['temp'])
+            self.fahrenheit = str(weather.temperature('fahrenheit')['temp'])
+            self.icon_id = weather.weather_icon_name
+        finally:
+            pass

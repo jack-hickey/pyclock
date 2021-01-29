@@ -13,6 +13,7 @@ class ZoneWidget(QtWidgets.QWidget):
 
         # Zone Code
         self.zone_text = DataDisplay(Constants.ZONE_FONT_SIZE, self.data.zone_code)
+        self.zone_text.setContentsMargins(0, Constants.WIDGET_PADDING, 0, 0)
 
         # Time
         self.time_text = DataDisplay(Constants.TIME_FONT_SIZE)
@@ -32,8 +33,6 @@ class ZoneWidget(QtWidgets.QWidget):
         self.layout = QtWidgets.QVBoxLayout()
         self.layout.setAlignment(QtCore.Qt.AlignCenter)
 
-        self.layout.setSpacing(0)
-
         # Weather Icon
         self.weather_icon_widget = QtWidgets.QLabel()
         self.weather_icon_widget.setAlignment(QtCore.Qt.AlignCenter)
@@ -50,6 +49,7 @@ class ZoneWidget(QtWidgets.QWidget):
 
         self.init_weather_controls()
 
+        self.layout.setSpacing(0)
         self.setLayout(self.layout)
 
     def init_weather_controls(self):
@@ -63,6 +63,8 @@ class ZoneWidget(QtWidgets.QWidget):
 
         weather_widget = QtWidgets.QWidget()
         weather_widget.setLayout(weather_box)
+
+        weather_widget.setContentsMargins(Constants.WIDGET_PADDING, 0, Constants.WIDGET_PADDING, 0)
 
         self.layout.addWidget(weather_widget)
 
