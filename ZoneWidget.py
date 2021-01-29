@@ -70,6 +70,7 @@ class ZoneWidget(QtWidgets.QWidget):
     def update_times(self):
         self.data.update_times()
 
+        self.zone_text.setText(self.data.zone_code)
         self.time_text.setText(self.data.datetime_data.strftime(Constants.TIME_FORMAT))
         self.long_date.setText(self.data.datetime_data.strftime(Constants.LONG_DATE_FORMAT))
         self.short_date.setText(self.data.datetime_data.strftime(Constants.SHORT_DATE_FORMAT))
