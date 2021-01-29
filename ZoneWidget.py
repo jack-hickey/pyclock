@@ -3,7 +3,6 @@ from DataDisplay import DataDisplay
 from ZoneData import ZoneData
 from PySide2 import QtCore, QtWidgets, QtGui
 from ZoneInfo import ZoneInfo
-import requests
 
 
 class ZoneWidget(QtWidgets.QWidget):

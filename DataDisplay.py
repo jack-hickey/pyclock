@@ -3,7 +3,7 @@ from PySide2 import QtCore, QtWidgets, QtGui
 
 
 class DataDisplay(QtWidgets.QLabel):
-    def __init__(self, size: int, text=Constants.DEFAULT_DATA_VALUE):
+    def __init__(self, size: int, text: str = Constants.DEFAULT_DATA_VALUE):
         super().__init__()
 
         self.setText(text)
