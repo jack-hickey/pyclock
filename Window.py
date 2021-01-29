@@ -33,7 +33,7 @@ class Window(QtWidgets.QMainWindow):
         self.win.setWindowTitle("PyClock")
         self.win.setSizePolicy(QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred))
         self.win.keyPressEvent = self.keyPressEvent
-        self.win.setStyleSheet('background-color: #121212; color:white; font-family:Roboto')
+        self.win.setStyleSheet('background-color: #161616; color:white; font-family:Roboto')
 
         for control in self.timezone_controls:
             grid.addWidget(control, control.data.zone.row, control.data.zone.col)
