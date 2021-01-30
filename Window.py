@@ -27,10 +27,10 @@ class Window(QtWidgets.QMainWindow):
         bottom_set.setAlignment(QtCore.Qt.AlignCenter)
 
         top_set.addWidget(ZoneWidget(ZoneInfo("US/Pacific", "Los Angeles, US"), "topLevel"))
-        top_set.addWidget(ZoneWidget(ZoneInfo("US/Eastern", "Philadelphia, US"), "bottomLevel"))
+        top_set.addWidget(ZoneWidget(ZoneInfo("US/Eastern", "Philadelphia, US"), "topLevel"))
 
         bottom_set.addWidget(ZoneWidget(ZoneInfo("Europe/Paris", "Paris, FR"), "bottomLevel"))
-        bottom_set.addWidget(ZoneWidget(ZoneInfo("Europe/London", "Calne, GB"), "topLevel"))
+        bottom_set.addWidget(ZoneWidget(ZoneInfo("Europe/London", "Calne, GB"), "bottomLevel"))
         bottom_set.addWidget(ZoneWidget(ZoneInfo("Asia/Calcutta", "Pune, IN"), "bottomLevel"))
 
         top_widget = QtWidgets.QWidget()
