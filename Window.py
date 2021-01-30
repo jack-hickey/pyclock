@@ -16,18 +16,34 @@ class Window(QtWidgets.QMainWindow):
 
         Constants.ICON_SIZE = int(app.primaryScreen().geometry().width() / 20)
 
-        self.timezone_controls = [
-            ZoneWidget(ZoneInfo("Europe/London", "Calne, GB", 1, 1)),
-            ZoneWidget(ZoneInfo("US/Pacific", "Los Angeles, US", 0, 0)),
-            ZoneWidget(ZoneInfo("US/Eastern", "Philadelphia, US", 0, 2)),
-            ZoneWidget(ZoneInfo("Europe/Paris", "Paris, FR", 2, 0)),
-            ZoneWidget(ZoneInfo("Asia/Calcutta", "Pune, IN", 2, 2))
-        ]
-
         QtGui.QFontDatabase.addApplicationFont(Constants.FONT_LOCATION)
 
         grid = QtWidgets.QGridLayout()
-        grid.setSpacing(0)
+
+        top_set = QtWidgets.QHBoxLayout()
+        bottom_set = QtWidgets.QHBoxLayout()
+
+        top_set.setAlignment(QtCore.Qt.AlignCenter)
+        bottom_set.setAlignment(QtCore.Qt.AlignCenter)
+
+        top_set.addWidget(ZoneWidget(ZoneInfo("US/Pacific", "Los Angeles, US"), "topLevel"))
+        top_set.addWidget(ZoneWidget(ZoneInfo("US/Eastern", "Philadelphia, US"), "bottomLevel"))
+
+        bottom_set.addWidget(ZoneWidget(ZoneInfo("Europe/Paris", "Paris, FR"), "bottomLevel"))
+        bottom_set.addWidget(ZoneWidget(ZoneInfo("Europe/London", "Calne, GB"), "topLevel"))
+        bottom_set.addWidget(ZoneWidget(ZoneInfo("Asia/Calcutta", "Pune, IN"), "bottomLevel"))
+
+        top_widget = QtWidgets.QWidget()
+        top_widget.setLayout(top_set)
+
+        bottom_widget = QtWidgets.QWidget()
+        bottom_widget.setLayout(bottom_set)
+
+        grid.addWidget(top_widget, 0, 0)
+        grid.addWidget(bottom_widget, 1, 0)
+
+        bottom_set.setSpacing(0)
+        top_set.setSpacing(0)
 
         self.win = QtWidgets.QWidget()
         self.win.setWindowTitle("PyClock")
@@ -35,9 +51,6 @@ class Window(QtWidgets.QMainWindow):
         self.win.keyPressEvent = self.keyPressEvent
 
         self.set_css()
-
-        for control in self.timezone_controls:
-            grid.addWidget(control, control.data.zone.row, control.data.zone.col)
 
         self.win.setLayout(grid)
 
@@ -47,11 +60,16 @@ class Window(QtWidgets.QMainWindow):
         self.timer.timeout.connect(self.update_data)
         self.timer.start(1000)
 
+        for item in self.win.findChildren(ZoneWidget):
+            parent = item.parentWidget()
+
+            item.setFixedSize(parent.width(), parent.height())
+
     def update_data(self):
         self.timer_count += 1
         reset_timer = False
 
-        for control in self.timezone_controls:
+        for control in self.win.findChildren(ZoneWidget):
             control.update_times()
 
             if self.timer_count == Constants.WEATHER_UPDATE_INTERVAL:
@@ -91,29 +109,17 @@ class Window(QtWidgets.QMainWindow):
                     padding-top: 15px;
                     border-radius: 10px;
                 }
-
-                #topLeftWidget
+                
+                #topLevel
                 {
-                    margin-bottom: 20px;
-                    margin-right: 20px;
+                    margin-left: 15px;
+                    margin-right: 15px;
                 }
-
-                #topRightWidget
+                
+                #bottomLevel
                 {
                     margin-left: 20px;
-                    margin-bottom: 20px;
-                }
-
-                #bottomLeftWidget
-                {
-                    margin-top: 20px;
                     margin-right: 20px;
-                }
-
-                #bottomRightWidget
-                {
-                    margin-left: 20px;
-                    margin-top: 20px;
                 }
             ''' % Constants.CARD_BACKGROUND
         )

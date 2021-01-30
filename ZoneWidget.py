@@ -6,13 +6,13 @@ from ZoneInfo import ZoneInfo
 
 
 class ZoneWidget(QtWidgets.QLabel):
-    def __init__(self, zone: ZoneInfo, parent=None):
+    def __init__(self, zone: ZoneInfo, name: str, parent=None):
         super(ZoneWidget, self).__init__(parent)
 
         self.data = ZoneData(zone)
         self.setStyleSheet(f"background-color: {Constants.CARD_BACKGROUND};")
 
-        self.set_id()
+        self.setObjectName(name)
 
         effect = QtWidgets.QGraphicsDropShadowEffect(self)
         effect.setBlurRadius(5)
@@ -84,22 +84,15 @@ class ZoneWidget(QtWidgets.QLabel):
         self.short_date.setText(self.data.datetime_data.strftime(Constants.SHORT_DATE_FORMAT))
 
     def update_weather(self):
-        self.data.update_weather()
+        try:
+            self.data.update_weather()
 
-        self.celsius_text.setText("%s °C" % self.data.celsius)
-        self.fahrenheit_text.setText("%s °F" % self.data.fahrenheit)
+            self.celsius_text.setText("%s °C" % self.data.celsius)
+            self.fahrenheit_text.setText("%s °F" % self.data.fahrenheit)
 
-        pixmap = QtGui.QPixmap(f"WeatherIcons/{self.data.icon_id}.png")
-        pixmap = pixmap.scaled(Constants.ICON_SIZE, Constants.ICON_SIZE, QtCore.Qt.AspectRatioMode.KeepAspectRatio)
+            pixmap = QtGui.QPixmap(f"WeatherIcons/{self.data.icon_id}.png")
+            pixmap = pixmap.scaled(Constants.ICON_SIZE, Constants.ICON_SIZE, QtCore.Qt.AspectRatioMode.KeepAspectRatio)
 
-        self.weather_icon_widget.setPixmap(pixmap)
-
-    def set_id(self):
-        if self.data.zone.row == 0 and self.data.zone.col == 0:
-            self.setObjectName("topLeftWidget")
-        elif self.data.zone.row == 0 and self.data.zone.col == 2:
-            self.setObjectName("topRightWidget")
-        elif self.data.zone.row == 2 and self.data.zone.col == 0:
-            self.setObjectName("bottomLeftWidget")
-        elif self.data.zone.row == 2 and self.data.zone.col == 2:
-            self.setObjectName("bottomRightWidget")
+            self.weather_icon_widget.setPixmap(pixmap)
+        finally:
+            pass
