@@ -12,6 +12,8 @@ class ZoneWidget(QtWidgets.QLabel):
         self.data = ZoneData(zone)
         self.setStyleSheet(f"background-color: {Constants.CARD_BACKGROUND};")
 
+        self.set_id()
+
         effect = QtWidgets.QGraphicsDropShadowEffect(self)
         effect.setBlurRadius(5)
         effect.setColor(QtGui.QColor("#1C1C1C"))
@@ -91,3 +93,13 @@ class ZoneWidget(QtWidgets.QLabel):
         pixmap = pixmap.scaled(Constants.ICON_SIZE, Constants.ICON_SIZE, QtCore.Qt.AspectRatioMode.KeepAspectRatio)
 
         self.weather_icon_widget.setPixmap(pixmap)
+
+    def set_id(self):
+        if self.data.zone.row == 0 and self.data.zone.col == 0:
+            self.setObjectName("topLeftWidget")
+        elif self.data.zone.row == 0 and self.data.zone.col == 2:
+            self.setObjectName("topRightWidget")
+        elif self.data.zone.row == 2 and self.data.zone.col == 0:
+            self.setObjectName("bottomLeftWidget")
+        elif self.data.zone.row == 2 and self.data.zone.col == 2:
+            self.setObjectName("bottomRightWidget")

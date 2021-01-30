@@ -34,24 +34,7 @@ class Window(QtWidgets.QMainWindow):
         self.win.setSizePolicy(QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred))
         self.win.keyPressEvent = self.keyPressEvent
 
-        self.win.setStyleSheet(
-            '''
-                QWidget
-                {
-                    background-color: #212121;
-                    color: #DFDFDF;
-                    font-family: Roboto;
-                }
-                
-                .ZoneWidget
-                {
-                    background-color: %s;
-                    margin: 20px;
-                    padding-top: 15px;
-                    border-radius: 10px;
-                }
-            ''' % Constants.CARD_BACKGROUND
-        )
+        self.set_css()
 
         for control in self.timezone_controls:
             grid.addWidget(control, control.data.zone.row, control.data.zone.col)
@@ -91,3 +74,46 @@ class Window(QtWidgets.QMainWindow):
         self.win.showFullScreen()
 
         app.exec_()
+
+    def set_css(self):
+        self.win.setStyleSheet(
+            '''
+                QWidget
+                {
+                    background-color: #212121;
+                    color: #DFDFDF;
+                    font-family: Roboto;
+                }
+
+                .ZoneWidget
+                {
+                    background-color: %s;
+                    padding-top: 15px;
+                    border-radius: 10px;
+                }
+
+                #topLeftWidget
+                {
+                    margin-bottom: 20px;
+                    margin-right: 20px;
+                }
+
+                #topRightWidget
+                {
+                    margin-left: 20px;
+                    margin-bottom: 20px;
+                }
+
+                #bottomLeftWidget
+                {
+                    margin-top: 20px;
+                    margin-right: 20px;
+                }
+
+                #bottomRightWidget
+                {
+                    margin-left: 20px;
+                    margin-top: 20px;
+                }
+            ''' % Constants.CARD_BACKGROUND
+        )
