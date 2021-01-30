@@ -33,8 +33,25 @@ class Window(QtWidgets.QMainWindow):
         self.win.setWindowTitle("PyClock")
         self.win.setSizePolicy(QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred))
         self.win.keyPressEvent = self.keyPressEvent
-        app.setStyleSheet("*[cssClass='poo''] { background-color:red }")
-        self.win.setStyleSheet('background-color: #212121; color:#DFDFDF; font-weight:400; font-family:Roboto')
+
+        self.win.setStyleSheet(
+            '''
+                QWidget
+                {
+                    background-color: #212121;
+                    color: #DFDFDF;
+                    font-family: Roboto;
+                }
+                
+                .ZoneWidget
+                {
+                    background-color: %s;
+                    margin: 20px;
+                    padding-top: 15px;
+                    border-radius: 10px;
+                }
+            ''' % Constants.CARD_BACKGROUND
+        )
 
         for control in self.timezone_controls:
             grid.addWidget(control, control.data.zone.row, control.data.zone.col)
@@ -55,6 +72,11 @@ class Window(QtWidgets.QMainWindow):
             control.update_times()
 
             if self.timer_count == Constants.WEATHER_UPDATE_INTERVAL:
+                thread = QtCore.QThread()
+                thread.start()
+
+                thread.start()
+
                 control.update_weather()
                 reset_timer = True
 

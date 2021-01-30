@@ -5,15 +5,22 @@ from PySide2 import QtCore, QtWidgets, QtGui
 from ZoneInfo import ZoneInfo
 
 
-class ZoneWidget(QtWidgets.QWidget):
-    def __init__(self, zone: ZoneInfo):
-        super().__init__()
+class ZoneWidget(QtWidgets.QLabel):
+    def __init__(self, zone: ZoneInfo, parent=None):
+        super(ZoneWidget, self).__init__(parent)
 
         self.data = ZoneData(zone)
+        self.setStyleSheet(f"background-color: {Constants.CARD_BACKGROUND};")
+
+        effect = QtWidgets.QGraphicsDropShadowEffect(self)
+        effect.setBlurRadius(5)
+        effect.setColor(QtGui.QColor("#1C1C1C"))
+        effect.setOffset(3, 6)
+
+        self.setGraphicsEffect(effect)
 
         # Zone Code
         self.zone_text = DataDisplay(Constants.ZONE_FONT_SIZE, self.data.zone_code)
-        self.zone_text.setContentsMargins(0, Constants.WIDGET_PADDING, 0, 0)
 
         # Time
         self.time_text = DataDisplay(Constants.TIME_FONT_SIZE)
@@ -63,8 +70,6 @@ class ZoneWidget(QtWidgets.QWidget):
 
         weather_widget = QtWidgets.QWidget()
         weather_widget.setLayout(weather_box)
-
-        weather_widget.setContentsMargins(Constants.WIDGET_PADDING, 0, Constants.WIDGET_PADDING, 0)
 
         self.layout.addWidget(weather_widget)
 
