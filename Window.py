@@ -61,9 +61,7 @@ class Window(QtWidgets.QMainWindow):
         self.timer.start(1000)
 
         for item in self.win.findChildren(ZoneWidget):
-            parent = item.parentWidget()
-
-            item.setFixedSize(parent.width(), parent.height())
+            item.update_size()
 
     def update_data(self):
         self.timer_count += 1

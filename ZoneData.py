@@ -1,4 +1,5 @@
 from datetime import datetime
+from pyowm.commons.exceptions import InvalidSSLCertificateError
 from pytz import timezone
 from pyowm import OWM
 import Constants
@@ -28,5 +29,5 @@ class ZoneData:
             self.celsius = str(weather.temperature('celsius')['temp'])
             self.fahrenheit = str(weather.temperature('fahrenheit')['temp'])
             self.icon_id = weather.weather_icon_name
-        finally:
+        except InvalidSSLCertificateError:
             pass
