@@ -95,7 +95,7 @@ class ZoneWidget(QtWidgets.QLabel):
             self.celsius_text.setText("%s °C" % self.data.celsius)
             self.fahrenheit_text.setText("%s °F" % self.data.fahrenheit)
 
-            pixmap = QtGui.QPixmap(f"WeatherIcons/{self.data.icon_id}.png")
+            pixmap = QtGui.QPixmap(f"WeatherIcons/{self.data.condition}.png")
             pixmap = pixmap.scaled(Constants.ICON_SIZE, Constants.ICON_SIZE, QtCore.Qt.AspectRatioMode.KeepAspectRatio)
 
             self.weather_icon_widget.setPixmap(pixmap)
