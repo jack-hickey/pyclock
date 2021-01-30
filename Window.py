@@ -26,12 +26,12 @@ class Window(QtWidgets.QMainWindow):
         top_set.setAlignment(QtCore.Qt.AlignCenter)
         bottom_set.setAlignment(QtCore.Qt.AlignCenter)
 
-        top_set.addWidget(ZoneWidget(ZoneInfo("US/Pacific", "Los Angeles, US"), "topLevel"))
-        top_set.addWidget(ZoneWidget(ZoneInfo("US/Eastern", "Philadelphia, US"), "topLevel"))
+        top_set.addWidget(ZoneWidget(ZoneInfo("US/Pacific", "Los Angeles, US"), "topMarginRight"))
+        top_set.addWidget(ZoneWidget(ZoneInfo("US/Eastern", "Philadelphia, US"), "topMarginLeft"))
 
-        bottom_set.addWidget(ZoneWidget(ZoneInfo("Europe/Paris", "Paris, FR"), "bottomLevel"))
-        bottom_set.addWidget(ZoneWidget(ZoneInfo("Europe/London", "Calne, GB"), "bottomLevel"))
-        bottom_set.addWidget(ZoneWidget(ZoneInfo("Asia/Calcutta", "Pune, IN"), "bottomLevel"))
+        bottom_set.addWidget(ZoneWidget(ZoneInfo("Europe/Paris", "Paris, FR"), "marginRight"))
+        bottom_set.addWidget(ZoneWidget(ZoneInfo("Europe/London", "Calne, GB"), ""))
+        bottom_set.addWidget(ZoneWidget(ZoneInfo("Asia/Calcutta", "Pune, IN"), "marginLeft"))
 
         top_widget = QtWidgets.QWidget()
         top_widget.setLayout(top_set)
@@ -108,16 +108,24 @@ class Window(QtWidgets.QMainWindow):
                     border-radius: 10px;
                 }
                 
-                #topLevel
-                {
-                    margin-left: 15px;
-                    margin-right: 15px;
-                }
-                
-                #bottomLevel
+                #marginLeft
                 {
                     margin-left: 20px;
+                }
+                
+                #marginRight
+                {
                     margin-right: 20px;
+                }
+                
+                #topMarginLeft
+                {
+                    margin-left: 10px;
+                }
+                
+                #topMarginRight
+                {
+                    margin-right: 10px;
                 }
             ''' % Constants.CARD_BACKGROUND
         )

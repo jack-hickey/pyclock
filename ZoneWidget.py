@@ -64,7 +64,7 @@ class ZoneWidget(QtWidgets.QLabel):
     def update_size(self):
         preferred_size = self.layout.sizeHint()
 
-        self.setFixedSize(preferred_size.width() + 50, preferred_size.height() + 50)
+        self.setFixedSize(preferred_size.width() + Constants.ICON_SIZE, preferred_size.height() + Constants.ICON_SIZE)
 
     def init_weather_controls(self):
         weather_box = QtWidgets.QHBoxLayout()
