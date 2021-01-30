@@ -23,8 +23,8 @@ class Window(QtWidgets.QMainWindow):
         top_set = QtWidgets.QHBoxLayout()
         bottom_set = QtWidgets.QHBoxLayout()
 
-        top_set.setAlignment(QtCore.Qt.AlignCenter)
-        bottom_set.setAlignment(QtCore.Qt.AlignCenter)
+        top_set.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignBottom)
+        bottom_set.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignTop)
 
         top_set.addWidget(ZoneWidget(ZoneInfo("US/Pacific", "Los Angeles, US"), "topMarginRight"))
         top_set.addWidget(ZoneWidget(ZoneInfo("US/Eastern", "Philadelphia, US"), "topMarginLeft"))
