@@ -29,7 +29,16 @@ class ZoneData:
             self.celsius = str(weather.temperature('celsius')['temp'])
             self.fahrenheit = str(weather.temperature('fahrenheit')['temp'])
 
-            self.condition = weather.status
+            self.condition = weather.status.lower()
+
+            if self.condition == "smoke"\
+                    or self.condition == "haze"\
+                    or self.condition == "dust"\
+                    or self.condition == "fog"\
+                    or self.condition == "sand"\
+                    or self.condition == "ash"\
+                    or self.condition == "squall":
+                self.condition = "mist"
         except InvalidSSLCertificateError:
             if self.condition == "":
                 self.condition = "clear"
