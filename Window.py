@@ -14,7 +14,8 @@ class Window(QtWidgets.QMainWindow):
 
         self.timer_count = 0
 
-        Constants.ICON_SIZE = int(app.primaryScreen().geometry().width() / 20)
+        # Constants.ICON_SIZE = int(app.primaryScreen().geometry().width() / 20)
+        # Constants.ICON_SIZE = 50
 
         QtGui.QFontDatabase.addApplicationFont(Constants.FONT_LOCATION)
 
