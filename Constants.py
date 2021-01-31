@@ -1,3 +1,6 @@
+import os
+from pyowm import OWM
+
 ZONE_FONT_SIZE = 26
 TEMPERATURE_FONT_SIZE = 16
 TIME_FONT_SIZE = 58
@@ -5,6 +8,8 @@ LONG_DATE_FONT_SIZE = 16
 SHORT_DATE_FONT_SIZE = 14
 ICON_SIZE = 64
 CARD_BACKGROUND = "#272727"
+
+API_INSTANCE = OWM(os.environ["WEATHER_API"]).weather_manager()
 
 TIME_FORMAT = "%H:%M:%S"
 LONG_DATE_FORMAT = "%A %d %B %Y"
