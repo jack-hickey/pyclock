@@ -39,6 +39,9 @@ class ZoneData:
                     or self.condition == "ash"\
                     or self.condition == "squall":
                 self.condition = "mist"
+
+            if self.condition != "tornado" and weather.weather_icon_name.endswith("n"):
+                self.condition += "_night"
         except InvalidSSLCertificateError:
             if self.condition == "":
                 self.condition = "clear"
