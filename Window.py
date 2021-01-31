@@ -3,6 +3,7 @@ from ZoneInfo import ZoneInfo
 from ZoneWidget import ZoneWidget
 from PySide2 import QtWidgets, QtGui, QtCore
 import Constants
+import os
 
 
 app = QtWidgets.QApplication(sys.argv)
@@ -14,7 +15,15 @@ class Window(QtWidgets.QMainWindow):
 
         self.timer_count = 0
 
-        QtGui.QFontDatabase.addApplicationFont(Constants.FONT_LOCATION)
+        font = ""
+
+        for file in os.listdir(os.getcwd()):
+            if file.endswith(".ttf"):
+                font = file
+                break
+
+        if font != "":
+            QtGui.QFontDatabase.addApplicationFont(font)
 
         grid = QtWidgets.QGridLayout()
 
