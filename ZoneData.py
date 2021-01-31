@@ -2,6 +2,7 @@ from datetime import datetime
 from pyowm.commons.exceptions import InvalidSSLCertificateError
 from pytz import timezone
 from pyowm import OWM
+import os
 import Constants
 from ZoneInfo import ZoneInfo
 
@@ -9,7 +10,7 @@ from ZoneInfo import ZoneInfo
 class ZoneData:
     def __init__(self, zone: ZoneInfo):
         self.zone = zone
-        self.weather_mgr = OWM(Constants.WEATHER_API).weather_manager()
+        self.weather_mgr = OWM(os.environ["WEATHER_API"]).weather_manager()
         self.datetime_data = None
         self.zone_code = ""
         self.condition = "clear_sky"
