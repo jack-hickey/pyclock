@@ -71,11 +71,6 @@ class Window(QtWidgets.QMainWindow):
             control.update_times()
 
             if self.timer_count == Constants.WEATHER_UPDATE_INTERVAL:
-                thread = QtCore.QThread()
-                thread.start()
-
-                thread.start()
-
                 control.update_weather()
                 reset_timer = True
 

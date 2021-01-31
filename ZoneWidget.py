@@ -89,15 +89,12 @@ class ZoneWidget(QtWidgets.QLabel):
         self.short_date.setText(self.data.datetime_data.strftime(Constants.SHORT_DATE_FORMAT))
 
     def update_weather(self):
-        try:
-            self.data.update_weather()
+        self.data.update_weather()
 
-            self.celsius_text.setText("%s °C" % self.data.celsius)
-            self.fahrenheit_text.setText("%s °F" % self.data.fahrenheit)
+        self.celsius_text.setText(f"{self.data.celsius} °C")
+        self.fahrenheit_text.setText(f"{self.data.fahrenheit} °F")
 
-            pixmap = QtGui.QPixmap(f"WeatherIcons/{self.data.condition}.png")
-            pixmap = pixmap.scaled(Constants.ICON_SIZE, Constants.ICON_SIZE, QtCore.Qt.AspectRatioMode.KeepAspectRatio)
+        pixmap = QtGui.QPixmap(f"WeatherIcons/{self.data.condition}.png")
+        pixmap = pixmap.scaled(Constants.ICON_SIZE, Constants.ICON_SIZE, QtCore.Qt.AspectRatioMode.KeepAspectRatio)
 
-            self.weather_icon_widget.setPixmap(pixmap)
-        finally:
-            pass
+        self.weather_icon_widget.setPixmap(pixmap)
