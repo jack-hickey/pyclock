@@ -100,7 +100,6 @@ class Window(QtWidgets.QMainWindow):
                 {
                     background-color: #212121;
                     color: #DFDFDF;
-                    font-family: Roboto;
                 }
 
                 .ZoneWidget
