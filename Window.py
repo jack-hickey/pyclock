@@ -28,6 +28,7 @@ class Window(QtWidgets.QMainWindow):
         grid = QtWidgets.QGridLayout()
 
         top_set = QtWidgets.QHBoxLayout()
+        centre_set = QtWidgets.QHBoxLayout()
         bottom_set = QtWidgets.QHBoxLayout()
 
         top_set.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignBottom)
@@ -43,11 +44,17 @@ class Window(QtWidgets.QMainWindow):
         top_widget = QtWidgets.QWidget()
         top_widget.setLayout(top_set)
 
+        centre_widget = QtWidgets.QWidget()
+        centre_widget.setLayout(centre_set)
+
+        centre_widget.hide()
+
         bottom_widget = QtWidgets.QWidget()
         bottom_widget.setLayout(bottom_set)
 
         grid.addWidget(top_widget, 0, 0)
-        grid.addWidget(bottom_widget, 1, 0)
+        grid.addWidget(centre_widget, 1, 0)
+        grid.addWidget(bottom_widget, 2, 0)
 
         bottom_set.setSpacing(15)
         top_set.setSpacing(15)
