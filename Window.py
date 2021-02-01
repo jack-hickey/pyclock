@@ -4,6 +4,7 @@ from ZoneWidget import ZoneWidget
 from PySide2 import QtWidgets, QtGui, QtCore
 import Constants
 import os
+import Config
 
 
 app = QtWidgets.QApplication(sys.argv)
@@ -34,12 +35,14 @@ class Window(QtWidgets.QMainWindow):
         top_set.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignBottom)
         bottom_set.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignTop)
 
-        top_set.addWidget(ZoneWidget(ZoneInfo("Los Angeles, US")))
-        top_set.addWidget(ZoneWidget(ZoneInfo("Philadelphia, US")))
+        for zone in Config.TOP_ROW_LOCATIONS:
+            top_set.addWidget(ZoneWidget(ZoneInfo(zone)))
 
-        bottom_set.addWidget(ZoneWidget(ZoneInfo("Paris, FR")))
-        bottom_set.addWidget(ZoneWidget(ZoneInfo("Calne, GB")))
-        bottom_set.addWidget(ZoneWidget(ZoneInfo("Pune, IN")))
+        for zone in Config.CENTRE_ROW_LOCATIONS:
+            centre_set.addWidget(ZoneWidget(ZoneInfo(zone)))
+
+        for zone in Config.BOTTOM_ROW_LOCATIONS:
+            bottom_set.addWidget(ZoneWidget(ZoneInfo(zone)))
 
         top_widget = QtWidgets.QWidget()
         top_widget.setLayout(top_set)
@@ -47,10 +50,17 @@ class Window(QtWidgets.QMainWindow):
         centre_widget = QtWidgets.QWidget()
         centre_widget.setLayout(centre_set)
 
-        centre_widget.hide()
-
         bottom_widget = QtWidgets.QWidget()
         bottom_widget.setLayout(bottom_set)
+
+        if not Config.TOP_ROW_LOCATIONS:
+            top_widget.hide()
+
+        if not Config.CENTRE_ROW_LOCATIONS:
+            centre_widget.hide()
+
+        if not Config.BOTTOM_ROW_LOCATIONS:
+            bottom_widget.hide()
 
         grid.addWidget(top_widget, 0, 0)
         grid.addWidget(centre_widget, 1, 0)

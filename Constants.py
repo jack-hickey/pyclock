@@ -20,3 +20,18 @@ WEATHER_UPDATE_INTERVAL = 600
 DEFAULT_DATA_VALUE = ""
 ZONE_CODE_FORMAT = "%Z"
 ESCAPE_KEY = 16777216
+
+DEFAULT_SETTINGS = [
+        {
+            "top_row": [
+                "Los Angeles, US",
+                "Philadelphia, US"
+            ],
+            "centre_row":[],
+            "bottom_row":[
+                "Paris, FR",
+                "Calne, GB",
+                "Pune, IN"
+            ]
+        }
+    ]
