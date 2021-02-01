@@ -1,4 +1,5 @@
 PySide2>=5.15.2
-pytz>=2020.5
 pyowm>=3.1.1
-requests>=2.25.1
+pytz>=2020.5
+timezonefinder>=5.1.0
+geopy>=2.1.0

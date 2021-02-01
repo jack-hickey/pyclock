@@ -33,12 +33,12 @@ class Window(QtWidgets.QMainWindow):
         top_set.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignBottom)
         bottom_set.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignTop)
 
-        top_set.addWidget(ZoneWidget(ZoneInfo("US/Pacific", "Los Angeles, US"), "topMarginRight"))
-        top_set.addWidget(ZoneWidget(ZoneInfo("US/Eastern", "Philadelphia, US"), "topMarginLeft"))
+        top_set.addWidget(ZoneWidget(ZoneInfo("Los Angeles, US"), "topMarginRight"))
+        top_set.addWidget(ZoneWidget(ZoneInfo("Philadelphia, US"), "topMarginLeft"))
 
-        bottom_set.addWidget(ZoneWidget(ZoneInfo("Europe/Paris", "Paris, FR"), "marginRight"))
-        bottom_set.addWidget(ZoneWidget(ZoneInfo("Europe/London", "Calne, GB"), ""))
-        bottom_set.addWidget(ZoneWidget(ZoneInfo("Asia/Calcutta", "Pune, IN"), "marginLeft"))
+        bottom_set.addWidget(ZoneWidget(ZoneInfo("Paris, FR"), "marginRight"))
+        bottom_set.addWidget(ZoneWidget(ZoneInfo("Calne, GB"), ""))
+        bottom_set.addWidget(ZoneWidget(ZoneInfo("Pune, IN"), "marginLeft"))
 
         top_widget = QtWidgets.QWidget()
         top_widget.setLayout(top_set)

@@ -1,5 +1,6 @@
 import os
 from pyowm import OWM
+from geopy.geocoders import Nominatim
 
 ZONE_FONT_SIZE = 26
 TEMPERATURE_FONT_SIZE = 16
@@ -8,6 +9,7 @@ LONG_DATE_FONT_SIZE = 16
 SHORT_DATE_FONT_SIZE = 14
 ICON_SIZE = 64
 CARD_BACKGROUND = "#272727"
+GEO_LOCATOR = Nominatim(user_agent="geoapiExercises")
 
 API_INSTANCE = OWM(os.environ["WEATHER_API"]).weather_manager()
 
