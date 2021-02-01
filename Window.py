@@ -35,14 +35,44 @@ class Window(QtWidgets.QMainWindow):
         top_set.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignBottom)
         bottom_set.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignTop)
 
+        width = 0
+        height = 0
+
         for zone in Config.TOP_ROW_LOCATIONS:
-            top_set.addWidget(ZoneWidget(ZoneInfo(zone)))
+            new_widget = ZoneWidget(ZoneInfo(zone))
+            new_size = new_widget.get_size()
+
+            if new_size.width() > width:
+                width = new_size.width()
+
+            if new_size.height() > height:
+                height = new_size.height()
+
+            top_set.addWidget(new_widget)
 
         for zone in Config.CENTRE_ROW_LOCATIONS:
-            centre_set.addWidget(ZoneWidget(ZoneInfo(zone)))
+            new_widget = ZoneWidget(ZoneInfo(zone))
+            new_size = new_widget.get_size()
+
+            if new_size.width() > width:
+                width = new_size.width()
+
+            if new_size.height() > height:
+                height = new_size.height()
+
+            centre_set.addWidget(new_widget)
 
         for zone in Config.BOTTOM_ROW_LOCATIONS:
-            bottom_set.addWidget(ZoneWidget(ZoneInfo(zone)))
+            new_widget = ZoneWidget(ZoneInfo(zone))
+            new_size = new_widget.get_size()
+
+            if new_size.width() > width:
+                width = new_size.width()
+
+            if new_size.height() > height:
+                height = new_size.height()
+
+            bottom_set.addWidget(new_widget)
 
         top_widget = QtWidgets.QWidget()
         top_widget.setLayout(top_set)
@@ -85,7 +115,7 @@ class Window(QtWidgets.QMainWindow):
         self.timer.start(1000)
 
         for item in self.win.findChildren(ZoneWidget):
-            item.update_size()
+            item.update_size(width, height)
 
     def update_data(self):
         self.timer_count += 1
