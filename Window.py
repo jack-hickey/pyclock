@@ -33,12 +33,12 @@ class Window(QtWidgets.QMainWindow):
         top_set.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignBottom)
         bottom_set.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignTop)
 
-        top_set.addWidget(ZoneWidget(ZoneInfo("Los Angeles, US"), "topMarginRight"))
-        top_set.addWidget(ZoneWidget(ZoneInfo("Philadelphia, US"), "topMarginLeft"))
+        top_set.addWidget(ZoneWidget(ZoneInfo("Los Angeles, US")))
+        top_set.addWidget(ZoneWidget(ZoneInfo("Philadelphia, US")))
 
-        bottom_set.addWidget(ZoneWidget(ZoneInfo("Paris, FR"), "marginRight"))
-        bottom_set.addWidget(ZoneWidget(ZoneInfo("Calne, GB"), ""))
-        bottom_set.addWidget(ZoneWidget(ZoneInfo("Pune, IN"), "marginLeft"))
+        bottom_set.addWidget(ZoneWidget(ZoneInfo("Paris, FR")))
+        bottom_set.addWidget(ZoneWidget(ZoneInfo("Calne, GB")))
+        bottom_set.addWidget(ZoneWidget(ZoneInfo("Pune, IN")))
 
         top_widget = QtWidgets.QWidget()
         top_widget.setLayout(top_set)
@@ -49,8 +49,8 @@ class Window(QtWidgets.QMainWindow):
         grid.addWidget(top_widget, 0, 0)
         grid.addWidget(bottom_widget, 1, 0)
 
-        bottom_set.setSpacing(0)
-        top_set.setSpacing(0)
+        bottom_set.setSpacing(15)
+        top_set.setSpacing(15)
 
         self.win = QtWidgets.QWidget()
         self.win.setWindowTitle("PyClock")
@@ -107,26 +107,6 @@ class Window(QtWidgets.QMainWindow):
                     background-color: %s;
                     padding-top: 15px;
                     border-radius: 10px;
-                }
-                
-                #marginLeft
-                {
-                    margin-left: 20px;
-                }
-                
-                #marginRight
-                {
-                    margin-right: 20px;
-                }
-                
-                #topMarginLeft
-                {
-                    margin-left: 10px;
-                }
-                
-                #topMarginRight
-                {
-                    margin-right: 10px;
                 }
             ''' % Constants.CARD_BACKGROUND
         )

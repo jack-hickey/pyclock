@@ -6,13 +6,11 @@ from ZoneInfo import ZoneInfo
 
 
 class ZoneWidget(QtWidgets.QLabel):
-    def __init__(self, zone: ZoneInfo, name: str, parent=None):
+    def __init__(self, zone: ZoneInfo, parent=None):
         super(ZoneWidget, self).__init__(parent)
 
         self.data = ZoneData(zone)
         self.setStyleSheet(f"background-color: {Constants.CARD_BACKGROUND};")
-
-        self.setObjectName(name)
 
         effect = QtWidgets.QGraphicsDropShadowEffect(self)
         effect.setBlurRadius(5)
