@@ -8,7 +8,6 @@ TIME_FONT_SIZE = 58
 LONG_DATE_FONT_SIZE = 16
 SHORT_DATE_FONT_SIZE = 14
 ICON_SIZE = 64
-CARD_BACKGROUND = "#272727"
 GEO_LOCATOR = Nominatim(user_agent="geoapiExercises")
 
 API_INSTANCE = OWM(os.environ["WEATHER_API"]).weather_manager()
@@ -32,6 +31,9 @@ DEFAULT_SETTINGS = [
                 "Paris, FR",
                 "Calne, GB",
                 "Pune, IN"
-            ]
+            ],
+            "card_colour": "#272727",
+            "background_colour": "#212121",
+            "foreground_colour": "#DFDFDF"
         }
     ]

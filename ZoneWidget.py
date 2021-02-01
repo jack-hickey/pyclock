@@ -3,6 +3,7 @@ from DataDisplay import DataDisplay
 from ZoneData import ZoneData
 from PySide2 import QtCore, QtWidgets, QtGui
 from ZoneInfo import ZoneInfo
+import Config
 
 
 class ZoneWidget(QtWidgets.QLabel):
@@ -10,7 +11,7 @@ class ZoneWidget(QtWidgets.QLabel):
         super(ZoneWidget, self).__init__(parent)
 
         self.data = ZoneData(zone)
-        self.setStyleSheet(f"background-color: {Constants.CARD_BACKGROUND};")
+        self.setStyleSheet(f"background-color: {Config.CARD_COLOR};")
 
         effect = QtWidgets.QGraphicsDropShadowEffect(self)
         effect.setBlurRadius(5)

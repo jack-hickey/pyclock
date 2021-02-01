@@ -145,15 +145,15 @@ class Window(QtWidgets.QMainWindow):
             '''
                 QWidget
                 {
-                    background-color: #212121;
-                    color: #DFDFDF;
+                    background-color: % s;
+                    color: % s;
                 }
 
                 .ZoneWidget
                 {
-                    background-color: %s;
+                    background-color: % s;
                     padding-top: 15px;
                     border-radius: 10px;
                 }
-            ''' % Constants.CARD_BACKGROUND
+            ''' % (Config.BACKGROUND_COLOR, Config.FOREGROUND_COLOR, Config.CARD_COLOR)
         )

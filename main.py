@@ -15,5 +15,9 @@ with open("settings.yaml") as data:
     Config.CENTRE_ROW_LOCATIONS = document.get("centre_row")
     Config.BOTTOM_ROW_LOCATIONS = document.get("bottom_row")
 
+    Config.BACKGROUND_COLOR = document.get("background_colour")
+    Config.CARD_COLOR = document.get("card_colour")
+    Config.FOREGROUND_COLOR = document.get("foreground_colour")
+
 win = Window()
 win.start()
