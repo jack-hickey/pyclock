@@ -1,0 +1,5 @@
+.*
+!/.gitignore
+settings.yaml
+*.pyc
+/__*__
